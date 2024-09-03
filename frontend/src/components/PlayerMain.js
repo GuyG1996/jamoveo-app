@@ -8,7 +8,7 @@ const PlayerMain = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { role, instrument } = location.state;
-  const [message, setMessage] = useState('Waiting for the next song...');
+  const [message] = useState('Waiting for the next song...');
   
   useEffect(() => {
     socket.on('song-selected', ({ fileName, songName, artist }) => {
@@ -19,7 +19,7 @@ const PlayerMain = () => {
     return () => {
       socket.off('song-selected');
     };
-  }, [navigate]);
+  }, [instrument, navigate, role]);
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
