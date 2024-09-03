@@ -9,12 +9,6 @@ const socketIo = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 
-// Define allowed origins
-// const allowedOrigins = [
-//   process.env.CLIENT_URL, // Local development
-//   process.env.CLIENT_URL_prod, // Production
-// ];
-
 // Set up Socket.io
 const io = socketIo(server, {
   cors: {

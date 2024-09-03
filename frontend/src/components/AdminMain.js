@@ -8,15 +8,12 @@ const AdminMain = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { role, instrument } = location.state;
-  console.log("role: ", role);
-  console.log("instrument: ", instrument);
 
   const handleSearch = async () => {
     
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/songs/search?query=${searchQuery}`);
       const results = response.data;
-      console.log("results:", results)
 
       if (results.length === 0) {
         alert('No results found. Please try a different search.');

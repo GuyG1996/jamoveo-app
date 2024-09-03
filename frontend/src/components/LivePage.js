@@ -16,11 +16,6 @@ const LivePage = () => {
   const containerRef = useRef(null);
 
   const { fileName, songName, artist, role, instrument } = location.state || {};
-  console.log("fileName: ", fileName);
-  console.log("songName: ", songName);
-  console.log("artist: ", artist);
-  console.log("role: ", role);
-  console.log("instrument: ", instrument);
 
   useEffect(() => {
     const fetchLyricsAndChords = async () => {
@@ -51,8 +46,8 @@ const LivePage = () => {
     let intervalId;
     if (scrolling && containerRef.current) {
       intervalId = setInterval(() => {
-        containerRef.current.scrollTop += 1; // Adjust scroll speed as needed
-      }, 50); // Adjust interval for scrolling speed
+        containerRef.current.scrollTop += 1; 
+      }, 50); 
     }
     return () => clearInterval(intervalId);
   }, [scrolling]);
@@ -73,8 +68,8 @@ const LivePage = () => {
         color: '#fff', // High contrast text color
         fontSize: '1.5em', // Large font size
         textAlign: 'center',
-        overflowY: 'scroll', // Use the default scrollbar
-        height: '100vh' // Ensure it uses the full height of the viewport
+        overflowY: 'scroll', 
+        height: '100vh' 
       }}
       ref={containerRef}
     >

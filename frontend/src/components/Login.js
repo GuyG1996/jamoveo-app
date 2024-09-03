@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import BackToHomepageButton from './BackToHomepageButton';
+import styles from '../styles/styles'; 
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -16,12 +17,6 @@ const Login = () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { username, password });
       const { role, instrument } = response.data;
-      console.log("role: ", role);
-      console.log("instrument: ", instrument);
-      console.log("response:", response);
-
-      // Save token to localStorage or context if needed
-      // localStorage.setItem('token', response.data.token);
 
       // Redirect based on role
       if (role === 'admin') {
@@ -35,49 +30,50 @@ const Login = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <BackToHomepageButton />
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          required
-        />
-        <div style={{ position: 'relative', marginBottom: '20px' }}>
+    <div style={styles.container}>
+      <img
+        src="https://avatars.githubusercontent.com/u/12444626?s=200&v=4"
+        alt="Moveo Logo"
+        style={styles.logo}
+      />
+      <div style={styles.content}>
+        <BackToHomepageButton />
+        <h2 style={styles.title}>Login</h2>
+        <form onSubmit={handleSubmit} style={styles.form}>
           <input
-            type={showPassword ? 'text' : 'password'}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
             required
-            style={{ paddingRight: '40px' }}
+            style={styles.input}
           />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            style={{
-              position: 'absolute',
-              right: '10px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              outline: 'none'
-            }}
-          >
-            {showPassword ? (
-              <FontAwesomeIcon icon={faEyeSlash} />
-            ) : (
-              <FontAwesomeIcon icon={faEye} />
-            )}
+          <div style={styles.passwordContainer}>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+              style={styles.passwordInput}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              style={styles.eyeButton}
+            >
+              {showPassword ? (
+                <FontAwesomeIcon icon={faEyeSlash} />
+              ) : (
+                <FontAwesomeIcon icon={faEye} />
+              )}
+            </button>
+          </div>
+          <button type="submit" style={styles.button}>
+            Login
           </button>
-        </div>
-        <button type="submit">Login</button>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

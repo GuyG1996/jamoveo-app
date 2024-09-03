@@ -27,7 +27,7 @@ router.get('/search', async (req, res) => {
             songName,
             artist,
             image,
-            fileName: file // Include filename to fetch details later
+            fileName: file 
           };
         }
         return null;

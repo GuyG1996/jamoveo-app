@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import BackToHomepageButton from './BackToHomepageButton';
-
+import styles from '../styles/styles'; 
 
 const SignupUser = () => {
   const [username, setUsername] = useState('');
@@ -22,46 +22,60 @@ const SignupUser = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <BackToHomepageButton />
-      <h2>Sign Up as User</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input 
-            type="text" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
-            required 
-          />
-        </label>
-        <label>
-          Password:
-          <input 
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
-          />
-        </label>
-        <label>
-          Instrument:
-          <select 
-            value={instrument} 
-            onChange={(e) => setInstrument(e.target.value)} 
-            required
-          >
-            <option value="">Select an instrument</option>
-            <option value="Drums">Drums</option>
-            <option value="Guitar">Guitar</option>
-            <option value="Bass">Bass</option>
-            <option value="Saxophone">Saxophone</option>
-            <option value="Keyboards">Keyboards</option>
-            <option value="Vocals">Vocals</option>
-          </select>
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+    <div style={styles.container}>
+      <img
+        src="https://avatars.githubusercontent.com/u/12444626?s=200&v=4"
+        alt="Moveo Logo"
+        style={styles.logo}
+      />
+      <div style={styles.content}>
+        <BackToHomepageButton />
+        <h2 style={styles.title}>Signup as Player</h2>
+        <form onSubmit={handleSubmit} style={styles.form}>
+          <label style={styles.label}>
+            Username:
+            <input 
+              type="text" 
+              value={username}
+              placeholder="Username" 
+              onChange={(e) => setUsername(e.target.value)} 
+              required 
+              style={styles.input}
+            />
+          </label>
+          <label style={styles.label}>
+            Password:
+            <input 
+              type="password" 
+              value={password}
+              placeholder="Password" 
+              onChange={(e) => setPassword(e.target.value)} 
+              required 
+              style={styles.input}
+            />
+          </label>
+          <label style={styles.label}>
+            Instrument:
+            <select 
+              value={instrument} 
+              onChange={(e) => setInstrument(e.target.value)} 
+              required
+              style={styles.select}
+            >
+              <option value="">Select an instrument</option>
+              <option value="Drums">Drums</option>
+              <option value="Guitar">Guitar</option>
+              <option value="Bass">Bass</option>
+              <option value="Saxophone">Saxophone</option>
+              <option value="Keyboards">Keyboards</option>
+              <option value="Vocals">Vocals</option>
+            </select>
+          </label>
+          <button type="submit" style={styles.button}>
+            Sign Up
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
