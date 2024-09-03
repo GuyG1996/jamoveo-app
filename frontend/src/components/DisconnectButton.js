@@ -1,8 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import io from 'socket.io-client';
+import socket from '../socket';
 
-const socket = io('http://localhost:5000');
 
 const DisconnectButton = () => {
   const navigate = useNavigate();

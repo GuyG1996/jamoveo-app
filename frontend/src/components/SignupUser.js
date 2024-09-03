@@ -12,7 +12,7 @@ const SignupUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/signup/user', { username, password, instrument });
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup/user`, { username, password, instrument });
       const role = 'player';
       navigate('/PlayerMain',{ state: { role, instrument} });
     } catch (error) {

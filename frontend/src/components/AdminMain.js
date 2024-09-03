@@ -14,7 +14,7 @@ const AdminMain = () => {
   const handleSearch = async () => {
     
     try {
-      const response = await axios.get(`http://localhost:5000/api/songs/search?query=${searchQuery}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/songs/search?query=${searchQuery}`);
       const results = response.data;
 
       if (results.length === 0) {

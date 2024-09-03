@@ -25,7 +25,7 @@ const LivePage = () => {
     const fetchLyricsAndChords = async () => {
       if (fileName) {
         try {
-          const response = await axios.get(`http://localhost:5000/api/songs/songs/${fileName}/lyrics`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/songs/songs/${fileName}/lyrics`);
           const lyricsData = response.data;
 
           if (lyricsData.length > 0 && lyricsData[0].length > 0) {

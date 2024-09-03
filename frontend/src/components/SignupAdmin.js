@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import BackToHomepageButton from './BackToHomepageButton';
+require('dotenv').config();
+
 
 const SignupAdmin = () => {
   const [username, setUsername] = useState('');
@@ -12,7 +14,7 @@ const SignupAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/signup/admin', { username, password, instrument });
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup/admin`, { username, password, instrument });
       const role = 'admin'
       navigate('/adminMain', { state: { role, instrument} });
     } catch (error) {
