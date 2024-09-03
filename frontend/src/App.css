@@ -1,0 +1,36 @@
+/* app.css */
+
+/* General styling for the App component */
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif; /* Example: change font-family */
+}
+
+/* Header styling for the App component */
+.App-header {
+  background-color: #282c34; /* Dark background */
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px; /* Add padding for spacing */
+}
+
+/* Button styling */
+button {
+  background-color: #61dafb; /* Button color */
+  color: white; /* Text color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+  margin: 10px; /* Margin around button */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #4fa3d0; /* Darker button color on hover */
+}
