@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 // Function to check if a string contains Hebrew characters
 const isHebrew = (text) => /[\u0590-\u05FF]/.test(text);
 
