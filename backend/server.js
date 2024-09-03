@@ -10,22 +10,22 @@ const app = express();
 const server = http.createServer(app);
 
 // Define allowed origins
-const allowedOrigins = [
-  process.env.CLIENT_URL, // Local development
-  process.env.CLIENT_URL_prod, // Production
-];
+// const allowedOrigins = [
+//   process.env.CLIENT_URL, // Local development
+//   process.env.CLIENT_URL_prod, // Production
+// ];
 
 // Set up Socket.io
 const io = socketIo(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: '*',
     methods: ['GET', 'POST'],
   }
 });
 
 // Configure CORS middleware
 app.use(cors({
-  origin: allowedOrigins,
+  origin: '*',
   methods: 'GET,POST,PUT,DELETE',
   credentials: true,
 }));
@@ -42,7 +42,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/songs', songsRoutes);
 
 // Serve static files from the frontend build directory
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend/build', 'index.html')));
 
 // Serve the frontend application for all other routes
 app.get('*', (req, res) => {
@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
 });
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URL, {})
+mongoose.connect(process.env.MONGODB_URI, {})
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error:', err));
 
