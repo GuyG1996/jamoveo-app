@@ -13,6 +13,7 @@ const SignupUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("api_url", process.env.REACT_APP_API_URL);
       await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup/user`, { username, password, instrument });
       const role = 'player';
       navigate('/PlayerMain',{ state: { role, instrument} });

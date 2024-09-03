@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import BackToHomepageButton from './BackToHomepageButton';
 
-
 const SignupAdmin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +12,9 @@ const SignupAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup/admin`, { username, password, instrument });
+      console.log("api_url", process.env.REACT_APP_API_URL);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup/admin`, { username, password, instrument });
+      console.log(response);
       const role = 'admin'
       navigate('/adminMain', { state: { role, instrument} });
     } catch (error) {

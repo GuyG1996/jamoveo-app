@@ -14,10 +14,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("api_url", process.env.REACT_APP_API_URL);
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { username, password });
       const { role, instrument } = response.data;
       console.log("role: ", role);
       console.log("instrument: ", instrument);
+      console.log("response:", response);
 
       // Save token to localStorage or context if needed
       // localStorage.setItem('token', response.data.token);
