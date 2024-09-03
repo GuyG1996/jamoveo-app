@@ -12,7 +12,6 @@ const SignupAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("api_url", process.env.REACT_APP_API_URL);
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup/admin`, { username, password, instrument });
       console.log(response);
       const role = 'admin'
