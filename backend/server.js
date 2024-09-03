@@ -8,17 +8,25 @@ const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
+
+// Define allowed origins
+const allowedOrigins = [
+  'http://localhost:3000', // Local development
+  'https://jamoveo-app-production.up.railway.app', // Production
+];
+
+// Set up Socket.io
 const io = socketIo(server, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:3000', 
-    methods: ['GET', 'POST'], 
+    origin: allowedOrigins, // Allow specified origins
+    methods: ['GET', 'POST'], // Allowed methods
   }
 });
 
-// Enable CORS for all origins during development
+// Configure CORS middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  methods: 'GET,POST,PUT,DELETE',
+  origin: allowedOrigins, // Allow specified origins
+  methods: 'GET,POST,PUT,DELETE', // Allowed methods
   credentials: true,
 }));
 
@@ -48,7 +56,7 @@ app.get('*', (req, res) => {
 
 // Socket.io connection handler
 io.on('connection', (socket) => {
-  console.log(`New client connected`);
+  console.log('New client connected');
 
   // Handle song selection
   socket.on('song-selected', (song) => {
@@ -56,7 +64,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    console.log(`Client disconnected`);
+    console.log('Client disconnected');
   });
 });
 
