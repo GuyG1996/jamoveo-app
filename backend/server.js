@@ -42,7 +42,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/songs', songsRoutes);
 
 // Serve static files from the frontend build directory
-app.use(express.static(path.join(__dirname, '../frontend/build', 'index.html')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // Serve the frontend application for all other routes
 app.get('*', (req, res) => {
