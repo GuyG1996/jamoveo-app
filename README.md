@@ -69,14 +69,4 @@ The **JaMoveo** web application is designed for Moveo band rehearsals, allowing 
 
 Access the live application at:
 
-- **Frontend**: [JaMoveo Frontend](https://jamoveo-app-frontend.onrender.com)
-- **Backend**: [JaMoveo Backend](https://jamoveo-app-backend.onrender.com)
-
-## Usage
-
-- **Admin**: Use the admin signup page to create an admin account. Start sessions and control the display for all players.
-- **Player**: Sign up with your instrument to participate in sessions.
-
-## License
-
-This project is licensed under the MIT License.
+- **live application**: [JaMoveo app](https://jamoveo-app-frontend.onrender.com)
