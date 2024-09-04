@@ -51,6 +51,11 @@ io.on('connection', (socket) => {
     io.emit('song-selected', song);
   });
 
+  socket.on('adminQuit', () => {
+    console.log('Received adminQuit event');
+    io.emit('adminQuit');
+  });
+
   socket.on('disconnect', () => {
     console.log('Client disconnected');
   });

@@ -9,6 +9,7 @@ socket.on('connect', () => {
   console.log('Socket connected:', socket.id);
 });
 
+
 socket.on('connect_error', (err) => {
   console.error('Connection error:', err.message);
 });
