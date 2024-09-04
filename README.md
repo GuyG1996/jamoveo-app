@@ -69,4 +69,6 @@ The **JaMoveo** web application is designed for Moveo band rehearsals, allowing 
 
 Access the live application at:
 
-- **live application**: [JaMoveo app](https://jamoveo-app-frontend.onrender.com)
+- **live application**:
+-  [Frontend](https://jamoveo-app-frontend.onrender.com)
+-  [Backend](https://jamoveo-app-backend.onrender.com)
